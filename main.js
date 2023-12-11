@@ -21,6 +21,8 @@ await M.init();
 
 // creating events in the calendar
 V.uicalendar.createEvents( M.getEvents('mmi1') );
+V.uicalendar.createEvents( M.getEvents('mmi2') );
+V.uicalendar.createEvents( M.getEvents('mmi3') );
 
 
 
@@ -28,6 +30,7 @@ V.uicalendar.createEvents( M.getEvents('mmi1') );
 V.init = function(){
     let menu = document.querySelector('nav');
     menu.addEventListener('click',  C.handler_clickOnWeek );
+
 }
 
 let C = {};
@@ -35,7 +38,6 @@ let C = {};
 
 C.init = function(){
     V.init();
-    // let hp = M.getData('principe');
     
 }
 
@@ -54,6 +56,27 @@ C.handler_clickOnWeek = function(ev){
     
 
 }
+
+V.uicalendar.setCalendarColor('mmi1', {
+  color: '#e8e8e8',
+  backgroundColor: '#FF0000',
+  borderColor: '#a1b56c',
+  dragBackgroundColor: '#585858',
+});
+
+V.uicalendar.setCalendarColor('mmi2', {
+  color: '#e8e8e8',
+  backgroundColor: '#FFF700',
+  borderColor: '#a1b56c',
+  dragBackgroundColor: '#585858',
+});
+
+V.uicalendar.setCalendarColor('mmi3', {
+  color: '#e8e8e8',
+  backgroundColor: '#23FF00',
+  borderColor: '#a1b56c',
+  dragBackgroundColor: '#585858',
+});
 
 
 C.init();
