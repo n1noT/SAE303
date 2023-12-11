@@ -28,7 +28,7 @@ V.uicalendar = new Calendar('#calendar', {
 
 V.init = function(){
     let menu = document.querySelector('nav');
-    menu.addEventListener('click',  C.handler_clickOnWeek );
+    menu.addEventListener('click',  V.handler_clickOnWeek );
 
 }
 

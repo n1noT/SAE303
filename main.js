@@ -33,6 +33,7 @@ V.uicalendar.createEvents( M.getEvents('mmi3') );
   Paramètre 4 : couleur bordure
   Paramètre 5 : couleur au drag
 */
+
 V.updateColor('mmi1', '#FFFFFF', '#640900', '#FFFFFF', '#980A00')
 
 V.updateColor('mmi2', '#FFFFFF', '#002464', '#FFFFFF', '#003696')
