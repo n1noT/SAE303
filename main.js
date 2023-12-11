@@ -24,14 +24,22 @@ V.uicalendar.createEvents( M.getEvents('mmi1') );
 V.uicalendar.createEvents( M.getEvents('mmi2') );
 V.uicalendar.createEvents( M.getEvents('mmi3') );
 
+/* 
+  V.updateColor
+
+  Paramètre 1 : calendrier
+  Paramètre 2 : couleur du texte
+  Paramètre 3 : couleur background
+  Paramètre 4 : couleur bordure
+  Paramètre 5 : couleur au drag
+*/
+V.updateColor('mmi1', '#FFFFFF', '#640900', '#FFFFFF', '#980A00')
+
+V.updateColor('mmi2', '#FFFFFF', '#002464', '#FFFFFF', '#003696')
+
+V.updateColor('mmi3', '#FFFFFF', '#096400', '#FFFFFF', '#0C8600')
 
 
-
-V.init = function(){
-    let menu = document.querySelector('nav');
-    menu.addEventListener('click',  C.handler_clickOnWeek );
-
-}
 
 let C = {};
 
@@ -40,43 +48,5 @@ C.init = function(){
     V.init();
     
 }
-
-C.handler_clickOnWeek = function(ev){
-    if ( ev.target.id == 'prev'){
-        V.uicalendar.prev();
-    }
-
-    if ( ev.target.id == 'current'){
-      V.uicalendar.today();
-    }
-
-    if ( ev.target.id == 'next'){
-      V.uicalendar.next();
-    }
-    
-
-}
-
-V.uicalendar.setCalendarColor('mmi1', {
-  color: '#e8e8e8',
-  backgroundColor: '#FF0000',
-  borderColor: '#a1b56c',
-  dragBackgroundColor: '#585858',
-});
-
-V.uicalendar.setCalendarColor('mmi2', {
-  color: '#e8e8e8',
-  backgroundColor: '#FFF700',
-  borderColor: '#a1b56c',
-  dragBackgroundColor: '#585858',
-});
-
-V.uicalendar.setCalendarColor('mmi3', {
-  color: '#e8e8e8',
-  backgroundColor: '#23FF00',
-  borderColor: '#a1b56c',
-  dragBackgroundColor: '#585858',
-});
-
 
 C.init();

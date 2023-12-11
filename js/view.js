@@ -26,4 +26,37 @@ V.uicalendar = new Calendar('#calendar', {
  
 });
 
+V.init = function(){
+    let menu = document.querySelector('nav');
+    menu.addEventListener('click',  C.handler_clickOnWeek );
+
+}
+
+
+V.handler_clickOnWeek = function(ev){
+  if ( ev.target.id == 'prev'){
+      V.uicalendar.prev();
+  }
+
+  if ( ev.target.id == 'current'){
+    V.uicalendar.today();
+  }
+
+  if ( ev.target.id == 'next'){
+    V.uicalendar.next();
+  }
+  
+
+}
+
+
+V.updateColor = function(cal, col, bg, border, drag){
+  V.uicalendar.setCalendarColor(cal, {
+    color: col,
+    backgroundColor: bg,
+    borderColor: border,
+    dragBackgroundColor: drag,
+  });
+}
+
 export { V };
