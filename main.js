@@ -32,6 +32,7 @@ V.uicalendar.createEvents( M.getEvents('mmi3') );
   Paramètre 3 : couleur background
   Paramètre 4 : couleur bordure
   Paramètre 5 : couleur au drag
+
 */
 
 V.updateColor('mmi1', '#FFFFFF', '#640900', '#FFFFFF', '#980A00')
@@ -51,3 +52,51 @@ C.init = function(){
 }
 
 C.init();
+
+C.courseColor = function(cal, tp, td, cm){
+  let calendrier = M.getEvents(cal);
+
+  for (let event of calendrier){
+    if(event.title.includes('TP')){
+      let changes = {
+        backgroundColor : tp
+      };
+
+      V.uicalendar.updateEvent(event.id, cal, changes)
+    }
+
+    if(event.title.includes('TD')){
+      let changes = {
+        backgroundColor : td
+      };
+
+      V.uicalendar.updateEvent(event.id, cal, changes)
+    }
+
+    if(event.title.includes('CM')){
+      let changes = {
+        backgroundColor : cm
+      };
+
+      V.uicalendar.updateEvent(event.id, cal, changes)
+    }
+  }
+
+  
+}
+
+/* 
+  C.courseColor
+
+  Paramètre 1 : calendrier
+  Paramètre 2 : couleur TP
+  Paramètre 3 : couleur TD
+  Paramètre 4 : couleur CM
+
+*/
+
+C.courseColor('mmi1', '#FF968C' , '#8D342B' , '#760F04')
+C.courseColor('mmi2', '#8CB5FF' , '#3B64AF' , '#083078')
+C.courseColor('mmi3', '#83FF77' , '#44B839' , '#177B0D')
+
+
