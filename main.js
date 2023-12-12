@@ -41,57 +41,100 @@ V.updateColor('mmi2', '#FFFFFF', '#002464', '#FFFFFF', '#003696')
 
 V.updateColor('mmi3', '#FFFFFF', '#096400', '#FFFFFF', '#0C8600')
 
+V.init = function(){
+  let week = document.querySelector('#week');
+  week.addEventListener('click',  V.handler_clickOnWeek );
 
+  let year = document.querySelector('#year');
+  year.addEventListener('click',  V.handler_clickOnYear );
+
+    
+  let groups = document.querySelector('#groups');
+  groups.addEventListener('click',  C.handler_clickOnGroup );
+}
 
 let C = {};
 
 
 C.init = function(){
     V.init();
-    
+  
 }
 
-C.init();
 
 C.courseColor = function(cal, tp, td, cm){
   let calendrier = M.getEvents(cal);
-
+  
   for (let event of calendrier){
     if(event.title.includes('TP')){
       let changes = {
         backgroundColor : tp
       };
-
+      
       V.uicalendar.updateEvent(event.id, cal, changes);
     }
-
+    
     if(event.title.includes('TD')){
       let changes = {
         backgroundColor : td
       };
-
+      
       V.uicalendar.updateEvent(event.id, cal, changes);
     }
-
+    
     if(event.title.includes('CM')){
       let changes = {
         backgroundColor : cm
       };
-
+      
       V.uicalendar.updateEvent(event.id, cal, changes);
     }
   }
+  
+}
 
+C.handler_clickOnGroup = function(ev){
+  let cal = ev.target.dataset.year;
+  let calendrier = M.getEvents(ev.target.dataset.year);
+
+    if(ev.target.tagName =="INPUT"){
+      if (ev.target.checked == false){
+        for (let event of calendrier){
+          if(event.groups.includes(ev.target.id)){
+            let changes = {
+              isVisible : 0
+            };
+            
+            V.uicalendar.updateEvent(event.id, cal, changes);
+          }
+        }
+        
+      }
+      if (ev.target.checked == true){
+        for (let event of calendrier){
+          if(event.groups.includes(ev.target.id)){
+            let changes = {
+              isVisible : 1
+            };
+            
+            V.uicalendar.updateEvent(event.id, cal, changes);
+          }
+        }
+        
+      }
+      
+  }
+  
   
 }
 
 /* 
-  C.courseColor
+C.courseColor
 
-  Paramètre 1 : calendrier
-  Paramètre 2 : couleur TP
-  Paramètre 3 : couleur TD
-  Paramètre 4 : couleur CM
+Paramètre 1 : calendrier
+Paramètre 2 : couleur TP
+Paramètre 3 : couleur TD
+Paramètre 4 : couleur CM
 
 */
 
@@ -99,3 +142,7 @@ C.courseColor('mmi1', '#FF968C' , '#8D342B' , '#760F04');
 C.courseColor('mmi2', '#8CB5FF' , '#3B64AF' , '#083078');
 C.courseColor('mmi3', '#83FF77' , '#44B839' , '#177B0D');
 
+
+C.init();
+
+export { C };

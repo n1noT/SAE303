@@ -26,13 +26,7 @@ V.uicalendar = new Calendar('#calendar', {
  
 });
 
-V.init = function(){
-    let week = document.querySelector('#week');
-    week.addEventListener('click',  V.handler_clickOnWeek );
 
-    let year = document.querySelector('#year');
-    year.addEventListener('click',  V.handler_clickOnYear );
-}
 
 
 V.handler_clickOnWeek = function(ev){
@@ -66,6 +60,24 @@ V.handler_clickOnYear = function(ev){
 
 }
 
+/*
+V.handler_clickOnGroup = function(ev){
+  if(ev.target.tagName =="INPUT"){
+    if (ev.target.checked == false){
+      V.uicalendar.setCalendarVisibility(ev.target.id, false),
+      console.log('not checked')
+    }
+    if (ev.target.checked == true){
+      V.uicalendar.setCalendarVisibility(ev.target.id, true),
+      console.log('checked')
+    }
+    
+  }
+
+}
+*/
+
+
 
 
 V.updateColor = function(cal, col, bg, border, drag){
@@ -76,5 +88,24 @@ V.updateColor = function(cal, col, bg, border, drag){
     dragBackgroundColor: drag,
   });
 }
+
+V.formatOneGroup = function( id, f, name ){
+  let template = document.querySelector('#group-template');
+  let li = template.innerHTML;
+  li = li.replace('{{id}}', id);
+  li = li.replace('{{for}}', f);
+  li = li.replace('{{nom}}', name);
+  return li;
+}
+
+V.renderGroups = function( data ){
+  let allHtmlItem = "";
+  for(let i=0; i<data.length; i++){
+      allHtmlItem += V.formatOneGroup(data[i].id, data[i].name);
+  }
+  document.querySelector("{{list-group}}").innerHTML = allHtmlItem;
+}
+
+
 
 export { V };
