@@ -17,18 +17,23 @@ M.getEvents = function(annee) {
     return null;
 }
 
-M.getAllEvents = function() {
+
+M.getConcatEvents = function() {
 
     let allEv = []
 
     for(let ev in Events){
-        allEv.push(Events[ev].toObject());
+        allEv = allEv.concat(Events[ev].toObject());
 
     }
 
     return allEv;
     
 }
+
+
+
+
 
 
 

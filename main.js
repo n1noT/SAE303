@@ -19,34 +19,13 @@ import { V } from "./js/view.js";
 await M.init();
 
 
-// creating events in the calendar
-V.uicalendar.createEvents( M.getEvents('mmi1') );
-V.uicalendar.createEvents( M.getEvents('mmi2') );
-V.uicalendar.createEvents( M.getEvents('mmi3') );
-
-/* 
-  V.updateColor
-
-  Paramètre 1 : calendrier
-  Paramètre 2 : couleur du texte
-  Paramètre 3 : couleur background
-  Paramètre 4 : couleur bordure
-  Paramètre 5 : couleur au drag
-
-*/
-
-V.updateColor('mmi1', '#FFFFFF', '#640900', '#FFFFFF', '#980A00')
-
-V.updateColor('mmi2', '#FFFFFF', '#002464', '#FFFFFF', '#003696')
-
-V.updateColor('mmi3', '#FFFFFF', '#096400', '#FFFFFF', '#0C8600')
 
 V.init = function(){
   let week = document.querySelector('#week');
   week.addEventListener('click',  V.handler_clickOnWeek );
 
   let year = document.querySelector('#year');
-  year.addEventListener('click',  V.handler_clickOnYear );
+  year.addEventListener('click',  C.handler_clickOnYear );
 
     
   let groups = document.querySelector('#groups');
@@ -62,80 +41,64 @@ C.init = function(){
 }
 
 
-C.courseColor = function(cal, tp, td, cm){
-  let calendrier = M.getEvents(cal);
-  
-  for (let event of calendrier){
-    if(event.title.includes('TP')){
-      let changes = {
-        backgroundColor : tp
-      };
-      
-      V.uicalendar.updateEvent(event.id, cal, changes);
-    }
-    
-    if(event.title.includes('TD')){
-      let changes = {
-        backgroundColor : td
-      };
-      
-      V.uicalendar.updateEvent(event.id, cal, changes);
-    }
-    
-    if(event.title.includes('CM')){
-      let changes = {
-        backgroundColor : cm
-      };
-      
-      V.uicalendar.updateEvent(event.id, cal, changes);
-    }
-  }
-  
-}
+
 
 C.handler_changeOnGroup = function(ev){
-  let allCalendriers = M.getAllEvents();
-
-  console.log(ev.target.value)
-
-  for(let calendrier of allCalendriers){
-    for (let event of calendrier){
-      if(event.groups.includes(ev.target.value)){
-        let changes = {
-          isVisible : 0
-        };
-        
-        V.uicalendar.updateEvent(event.id, event.calendarId, changes);
-      }
-      else{
-        let changes = {
-          isVisible : 1
-        };
-        
-        V.uicalendar.updateEvent(event.id, event.calandarId, changes);
-      }
-    }
-  }
-       
+  let allEvents = M.getConcatEvents();
   
+  let eventsByGroup = [];
+
+    for (let event of allEvents){
+      if(event.groups.includes(ev.target.value)){
+        eventsByGroup.push(event);
+      }
+  
+    }
+
+  V.uicalendar.clear()
+
+  V.courseColor(eventsByGroup)
+
+  V.uicalendar.createEvents(eventsByGroup)
+
   
 }
 
-/* 
-C.courseColor
+C.handler_clickOnYear = function(ev){
+  if(ev.target.tagName =="INPUT"){
+    let allEvents = M.getConcatEvents();
+  
+    let eventsByYear = [];
 
-Paramètre 1 : calendrier
-Paramètre 2 : couleur TP
-Paramètre 3 : couleur TD
-Paramètre 4 : couleur CM
+    let years = document.querySelectorAll('#year li input')
+ 
+    for(let y of years){
+      if(y.checked == true){
+        for (let event of allEvents){
+          if(event.calendarId == y.id){
+            eventsByYear.push(event);
+          }
+        }
+      }
+    }
+      
+    V.uicalendar.clear()
 
-*/
+    V.courseColor(eventsByYear)
 
-C.courseColor('mmi1', '#FF968C' , '#8D342B' , '#760F04');
-C.courseColor('mmi2', '#8CB5FF' , '#3B64AF' , '#083078');
-C.courseColor('mmi3', '#83FF77' , '#44B839' , '#177B0D');
+    V.uicalendar.createEvents(eventsByYear)
+        
+  }
+
+}
 
 
 C.init();
+
+let all = M.getConcatEvents()
+
+V.courseColor(all)
+
+V.uicalendar.createEvents(all);
 
 export { C };
