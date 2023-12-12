@@ -50,7 +50,7 @@ V.init = function(){
 
     
   let groups = document.querySelector('#groups');
-  groups.addEventListener('click',  C.handler_clickOnGroup );
+  groups.addEventListener('change',  C.handler_changeOnGroup );
 }
 
 let C = {};
@@ -93,37 +93,30 @@ C.courseColor = function(cal, tp, td, cm){
   
 }
 
-C.handler_clickOnGroup = function(ev){
-  let cal = ev.target.dataset.year;
-  let calendrier = M.getEvents(ev.target.dataset.year);
+C.handler_changeOnGroup = function(ev){
+  let allCalendriers = M.getAllEvents();
 
-    if(ev.target.tagName =="INPUT"){
-      if (ev.target.checked == false){
-        for (let event of calendrier){
-          if(event.groups.includes(ev.target.id)){
-            let changes = {
-              isVisible : 0
-            };
-            
-            V.uicalendar.updateEvent(event.id, cal, changes);
-          }
-        }
+  console.log(ev.target.value)
+
+  for(let calendrier of allCalendriers){
+    for (let event of calendrier){
+      if(event.groups.includes(ev.target.value)){
+        let changes = {
+          isVisible : 0
+        };
         
+        V.uicalendar.updateEvent(event.id, event.calendarId, changes);
       }
-      if (ev.target.checked == true){
-        for (let event of calendrier){
-          if(event.groups.includes(ev.target.id)){
-            let changes = {
-              isVisible : 1
-            };
-            
-            V.uicalendar.updateEvent(event.id, cal, changes);
-          }
-        }
+      else{
+        let changes = {
+          isVisible : 1
+        };
         
+        V.uicalendar.updateEvent(event.id, event.calandarId, changes);
       }
-      
+    }
   }
+       
   
   
 }
