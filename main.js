@@ -62,7 +62,7 @@ C.courseColor = function(cal, tp, td, cm){
         backgroundColor : tp
       };
 
-      V.uicalendar.updateEvent(event.id, cal, changes)
+      V.uicalendar.updateEvent(event.id, cal, changes);
     }
 
     if(event.title.includes('TD')){
@@ -70,7 +70,7 @@ C.courseColor = function(cal, tp, td, cm){
         backgroundColor : td
       };
 
-      V.uicalendar.updateEvent(event.id, cal, changes)
+      V.uicalendar.updateEvent(event.id, cal, changes);
     }
 
     if(event.title.includes('CM')){
@@ -78,7 +78,7 @@ C.courseColor = function(cal, tp, td, cm){
         backgroundColor : cm
       };
 
-      V.uicalendar.updateEvent(event.id, cal, changes)
+      V.uicalendar.updateEvent(event.id, cal, changes);
     }
   }
 
@@ -95,8 +95,7 @@ C.courseColor = function(cal, tp, td, cm){
 
 */
 
-C.courseColor('mmi1', '#FF968C' , '#8D342B' , '#760F04')
-C.courseColor('mmi2', '#8CB5FF' , '#3B64AF' , '#083078')
-C.courseColor('mmi3', '#83FF77' , '#44B839' , '#177B0D')
-
+C.courseColor('mmi1', '#FF968C' , '#8D342B' , '#760F04');
+C.courseColor('mmi2', '#8CB5FF' , '#3B64AF' , '#083078');
+C.courseColor('mmi3', '#83FF77' , '#44B839' , '#177B0D');
 

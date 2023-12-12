@@ -27,9 +27,11 @@ V.uicalendar = new Calendar('#calendar', {
 });
 
 V.init = function(){
-    let menu = document.querySelector('nav');
-    menu.addEventListener('click',  V.handler_clickOnWeek );
+    let week = document.querySelector('#week');
+    week.addEventListener('click',  V.handler_clickOnWeek );
 
+    let year = document.querySelector('#year');
+    year.addEventListener('click',  V.handler_clickOnYear );
 }
 
 
@@ -48,6 +50,22 @@ V.handler_clickOnWeek = function(ev){
   
 
 }
+
+V.handler_clickOnYear = function(ev){
+  if(ev.target.tagName =="INPUT"){
+    if (ev.target.checked == false){
+      V.uicalendar.setCalendarVisibility(ev.target.id, false),
+      console.log('not checked')
+    }
+    if (ev.target.checked == true){
+      V.uicalendar.setCalendarVisibility(ev.target.id, true),
+      console.log('checked')
+    }
+    
+  }
+
+}
+
 
 
 V.updateColor = function(cal, col, bg, border, drag){

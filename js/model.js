@@ -17,6 +17,17 @@ M.getEvents = function(annee) {
     return null;
 }
 
+// M.filterYear = function( type ){
+//     /*
+//     if (type=='all'){
+//         return M.getEvents('mmi1');
+//     }
+//     */
+//     // else{
+//         return M.recipes.filter( r => r.type.find( t => t==type ) !=undefined );
+//     //}
+// }
+
 M.init = async function() {
     let data = await fetch('./data/mmi1.ics');
     data = await data.text();
