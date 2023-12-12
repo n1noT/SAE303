@@ -62,11 +62,7 @@ V.handler_clickOnWeek = function(ev){
 /* 
 V.courseColor
 
-Paramètre 1 : calendrier
-Paramètre 2 : couleur TP
-Paramètre 3 : couleur TD
-Paramètre 4 : couleur CM
-Paramètre 5 : couleur autres cours
+objectevents : tableau d'événements
 
 */
 

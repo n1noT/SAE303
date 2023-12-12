@@ -41,8 +41,6 @@ C.init = function(){
 }
 
 
-
-
 C.handler_changeOnGroup = function(ev){
   let allEvents = M.getConcatEvents();
   
