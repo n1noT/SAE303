@@ -61,12 +61,6 @@ C.init = function(){
       let view = localStorage.getItem("view");
       V.uicalendar.changeView(view)
     } 
-
-
-    
-
-      
-    
 }
 
 /* 

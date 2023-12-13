@@ -58,6 +58,8 @@ V.uicalendar = new Calendar('#calendar', {
 });
 
 
+
+
 /* 
 V.handler_clickOnWeek 
 
