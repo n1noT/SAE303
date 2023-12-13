@@ -27,6 +27,9 @@ V.init = function(){
   let year = document.querySelector('#year');
   year.addEventListener('click',  C.handler_clickOnYear );
 
+  let viewStyle = document.querySelector('#view');
+  viewStyle.addEventListener('click',  V.handler_clickOnView );
+
     
   let groups = document.querySelector('#groups');
   groups.addEventListener('change',  C.handler_changeOnGroup );

@@ -59,6 +59,22 @@ V.handler_clickOnWeek = function(ev){
 
 }
 
+V.handler_clickOnView = function(ev){
+  if ( ev.target.id == 'mois'){
+      V.uicalendar.changeView('month');
+  }
+
+  if ( ev.target.id == 'semaine'){
+      V.uicalendar.changeView('week');
+  }
+
+  if ( ev.target.id == 'jour'){
+      V.uicalendar.changeView('day');
+  }   
+  
+
+}
+
 /* 
 V.courseColor
 

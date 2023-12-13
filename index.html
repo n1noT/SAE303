@@ -10,23 +10,41 @@
     <div>
       <header>
         <nav>
+          <ul id="view">
+            <li>
+              <button id="mois">
+                Mois
+              </button>
+            </li>
+            <li>
+              <button id="semaine">
+                Semaine
+              </button >
+            </li>
+            <li>
+              <button id="jour">
+                Jour
+              </button>
+            </li>
+          </ul>
           <ul id="week">
             <li>
               <button class="button is-rounded prev" id="prev">
-                Semaine Précédente
+                Précédent
               </button>
             </li>
             <li>
               <button class="button is-rounded today" id="current">
-                Semaine En Cours
+                En Cours
               </button>
             </li>
             <li>
             <button class="button is-rounded next" id="next">
-                Semaine Suivante
+                Suivant
               </button>
             </li>
           </ul>
+
           <ul id="year">
             <li>
               <input type="checkbox" id="mmi1" name="mmi1" checked="" />
@@ -64,6 +82,8 @@
           </select>
 
           <input type="text" id="search">
+
+          
         </nav>
       </header>
 
