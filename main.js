@@ -30,7 +30,12 @@ V.init = function(){
     
   let groups = document.querySelector('#groups');
   groups.addEventListener('change',  C.handler_changeOnGroup );
+
+  let input = document.querySelector('#search');
+  input.addEventListener('keyup', C.handler_keyUpSearch);
+
 }
+
 
 let C = {};
 
@@ -88,6 +93,19 @@ C.handler_clickOnYear = function(ev){
         
   }
 
+}
+
+C.handler_keyUpSearch = function(ev){
+
+  let value = ev.target.value;
+  let eventsByText = M.filterEventsByText(value);
+
+  V.uicalendar.clear()
+
+  V.courseColor(eventsByText)
+
+  V.uicalendar.createEvents(eventsByText)
+        
 }
 
 

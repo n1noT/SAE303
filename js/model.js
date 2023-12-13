@@ -31,8 +31,85 @@ M.getConcatEvents = function() {
     
 }
 
+M.filterEventsByText = function (input){
+    
+    let res = []
+   
+    for(let events of M.getConcatEvents()){
+        for (let elt in events){
+            if(events[elt].toString().toLowerCase().includes(input.toLowerCase())){
+                if(res.includes(events)){
 
+                }
+                else{
+                    res.push(events);
+                }
 
+            }
+        }
+        
+    }
+    
+     /*
+    for(let events of M.getConcatEvents()){
+        console.log('title :' + events.title)
+        console.log('location :' + events.location)
+        console.log('body :' + events.body)
+        console.log('start :' + events.start)
+        console.log('end :' + events.end)
+        console.log('groups :' + events.groups)
+        console.log('type :' + events.type)
+        console.log('calendarId :' + events.calendarID)
+
+            if(events.title.toLowerCase().includes(input.toLowerCase())){
+                res.push(events);
+                // console.log(res)
+
+            }
+            else if(events.location.toLowerCase().includes(input.toLowerCase())){
+                res.push(events);
+                // console.log(res)
+
+            }
+            else if(events.body.toLowerCase().includes(input.toLowerCase())){
+                res.push(events);
+                // console.log(res)
+
+            }
+            /*
+            else if(events.start.toLowerCase().includes(input.toLowerCase())){
+                res.push(events);
+                // console.log(res)
+
+            }
+            
+            else if(events.end.toLowerCase().includes(input.toLowerCase())){
+                res.push(events);
+                // console.log(res)
+
+            }
+            
+            else if(events.groups.toLowerCase().includes(input.toLowerCase())){
+                res.push(events);
+                // console.log(res)
+
+            }
+            
+            else if(events.type.toLowerCase().includes(input.toLowerCase())){
+                res.push(events);
+                // console.log(res)
+
+            }
+            
+            else if(events.calandarId.toLowerCase().includes(input.toLowerCase())){
+                res.push(events);
+                // console.log(res)
+
+            }
+            */
+    
+    return structuredClone(res);
+}
 
 
 
