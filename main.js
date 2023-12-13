@@ -98,13 +98,17 @@ C.handler_clickOnYear = function(ev){
 C.handler_keyUpSearch = function(ev){
 
   let value = ev.target.value;
-  let eventsByText = M.filterEventsByText(value);
+  
+    let eventsByText = M.filterEventsByText(value);
 
-  V.uicalendar.clear()
+    V.uicalendar.clear()
 
-  V.courseColor(eventsByText)
+    V.courseColor(eventsByText)
 
-  V.uicalendar.createEvents(eventsByText)
+    V.uicalendar.createEvents(eventsByText)
+  
+
+
         
 }
 

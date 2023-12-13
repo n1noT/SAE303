@@ -30,87 +30,69 @@ M.getConcatEvents = function() {
     return allEv;
     
 }
-
+/*
 M.filterEventsByText = function (input){
     
     let res = []
-   
+
+    let inputAllTerms = input.split(" ")
+
+    console.log(inputAllTerms)
+
     for(let events of M.getConcatEvents()){
         for (let elt in events){
-            if(events[elt].toString().toLowerCase().includes(input.toLowerCase())){
-                if(res.includes(events)){
-
+            for (let inp of inputAllTerms){
+                if(events[elt].toString().toLowerCase().includes(inp.toLowerCase())){
+                    if(res.includes(events) == false){
+                        res.push(events);
+    
+                    }
+                    
                 }
-                else{
-                    res.push(events);
-                }
-
             }
+            
         }
         
     }
     
-     /*
-    for(let events of M.getConcatEvents()){
-        console.log('title :' + events.title)
-        console.log('location :' + events.location)
-        console.log('body :' + events.body)
-        console.log('start :' + events.start)
-        console.log('end :' + events.end)
-        console.log('groups :' + events.groups)
-        console.log('type :' + events.type)
-        console.log('calendarId :' + events.calendarID)
-
-            if(events.title.toLowerCase().includes(input.toLowerCase())){
-                res.push(events);
-                // console.log(res)
-
-            }
-            else if(events.location.toLowerCase().includes(input.toLowerCase())){
-                res.push(events);
-                // console.log(res)
-
-            }
-            else if(events.body.toLowerCase().includes(input.toLowerCase())){
-                res.push(events);
-                // console.log(res)
-
-            }
-            /*
-            else if(events.start.toLowerCase().includes(input.toLowerCase())){
-                res.push(events);
-                // console.log(res)
-
-            }
-            
-            else if(events.end.toLowerCase().includes(input.toLowerCase())){
-                res.push(events);
-                // console.log(res)
-
-            }
-            
-            else if(events.groups.toLowerCase().includes(input.toLowerCase())){
-                res.push(events);
-                // console.log(res)
-
-            }
-            
-            else if(events.type.toLowerCase().includes(input.toLowerCase())){
-                res.push(events);
-                // console.log(res)
-
-            }
-            
-            else if(events.calandarId.toLowerCase().includes(input.toLowerCase())){
-                res.push(events);
-                // console.log(res)
-
-            }
-            */
     
     return structuredClone(res);
 }
+*/
 
+M.filterEventsByText = function (input) {
+    let res = [];
+
+    let inputAllTerms = input.split(" ");
+
+    for (let events of M.getConcatEvents()) {
+        let match = true;  
+
+        for (let inp of inputAllTerms) {
+            let inlcus = false;  
+
+            for (let elt in events) {
+                if (events[elt].toString().toLowerCase().includes(inp.toLowerCase())) {
+                    inlcus = true;
+                    break;  
+                }
+            }
+
+            if (inlcus == false) {
+                match = false;
+                break;  
+            }
+        }
+
+        if (match == true ) {
+            if (res.includes(events) == false) {
+                res.push(events);
+            }
+        }
+    }
+
+    return structuredClone(res);
+}
 
 
 
