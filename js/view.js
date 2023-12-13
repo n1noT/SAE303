@@ -40,6 +40,17 @@ V.uicalendar = new Calendar('#calendar', {
  
 });
 
+V.userDevice = function(){
+  if (window.innerWidth <= 500) {
+    V.uicalendar.changeView('day')
+  } 
+  else {
+    V.uicalendar.changeView('week')
+  }
+}
+
+
+
 
 
 

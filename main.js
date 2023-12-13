@@ -124,4 +124,6 @@ V.courseColor(all)
 
 V.uicalendar.createEvents(all);
 
+V.userDevice()
+
 export { C };
