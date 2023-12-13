@@ -20,34 +20,63 @@ await M.init();
 
 
 
-V.init = function(){
-  let week = document.querySelector('#week');
-  week.addEventListener('click',  V.handler_clickOnWeek );
-
-  let year = document.querySelector('#year');
-  year.addEventListener('click',  C.handler_clickOnYear );
-
-  let viewStyle = document.querySelector('#view');
-  viewStyle.addEventListener('click',  V.handler_clickOnView );
-
-    
-  let groups = document.querySelector('#groups');
-  groups.addEventListener('change',  C.handler_changeOnGroup );
-
-  let input = document.querySelector('#search');
-  input.addEventListener('keyup', C.handler_keyUpSearch);
-
-}
-
-
 let C = {};
 
 
 C.init = function(){
     V.init();
-  
+
+    let year = document.querySelector('#year');
+    year.addEventListener('click',  C.handler_clickOnYear );
+
+    let groups = document.querySelector('#groups');
+    groups.addEventListener('change',  C.handler_changeOnGroup );
+
+    let input = document.querySelector('#search');
+    input.addEventListener('keyup', C.handler_keyUpSearch);
+
+
+    let all = M.getConcatEvents()
+    V.courseColor(all)
+    V.uicalendar.createEvents(all);
+    V.userDevice()
+
+ 
+    if(!localStorage.getItem("group") && localStorage.getItem("year") != undefined){
+      let year = JSON.parse(localStorage.getItem("year"));
+      V.uicalendar.clear();
+      V.courseColor(year);
+      V.uicalendar.createEvents(year);
+
+    }
+
+    if(!localStorage.getItem("year") && localStorage.getItem("group") != undefined){
+      let group = JSON.parse(localStorage.getItem("group"));
+      V.uicalendar.clear();
+      V.courseColor(group);
+      V.uicalendar.createEvents(group);
+    } 
+
+    if(localStorage.getItem("view") != undefined){
+      let view = localStorage.getItem("view");
+      V.uicalendar.changeView(view)
+    } 
+
+
+    
+
+      
+    
 }
 
+/* 
+C.handler_changeOnGroup
+
+Fonction qui affiche le calendrier d'un groupe selon un élément sélectionné
+
+ev : objet sélectionné
+
+*/
 
 C.handler_changeOnGroup = function(ev){
   let allEvents = M.getConcatEvents();
@@ -61,14 +90,26 @@ C.handler_changeOnGroup = function(ev){
   
     }
 
+  localStorage.removeItem("group");
+  localStorage.removeItem("year");
+
+  localStorage.setItem("group",  JSON.stringify(eventsByGroup));
+
   V.uicalendar.clear()
-
   V.courseColor(eventsByGroup)
-
   V.uicalendar.createEvents(eventsByGroup)
 
   
 }
+
+/* 
+C.handler_changeOnYear
+
+Fonction qui affiche le calendrier d'une année de formation selon un élément sélectionné
+
+ev : objet sélectionné
+
+*/
 
 C.handler_clickOnYear = function(ev){
   if(ev.target.tagName =="INPUT"){
@@ -87,43 +128,40 @@ C.handler_clickOnYear = function(ev){
         }
       }
     }
+
+    localStorage.removeItem("year");
+    localStorage.removeItem("group");
+    
+    localStorage.setItem("year", JSON.stringify(eventsByYear));
       
     V.uicalendar.clear()
-
     V.courseColor(eventsByYear)
-
     V.uicalendar.createEvents(eventsByYear)
         
   }
 
 }
 
+/* 
+C.handler_keyUpSearch
+
+Fonction qui affiche le calendrier selon des critères de recherche
+
+ev : chaine entré
+
+*/
+
 C.handler_keyUpSearch = function(ev){
 
   let value = ev.target.value;
   
-    let eventsByText = M.filterEventsByText(value);
+  let eventsByText = M.filterEventsByText(value);
 
-    V.uicalendar.clear()
-
-    V.courseColor(eventsByText)
-
-    V.uicalendar.createEvents(eventsByText)
-  
-
-
-        
+  V.uicalendar.clear()
+  V.courseColor(eventsByText)
+  V.uicalendar.createEvents(eventsByText)
+    
 }
 
 
 C.init();
-
-let all = M.getConcatEvents()
-
-V.courseColor(all)
-
-V.uicalendar.createEvents(all);
-
-V.userDevice()
-
-export { C };

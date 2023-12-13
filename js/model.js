@@ -10,6 +10,8 @@ let Events = {
 
 let M = {};
 
+
+
 M.getEvents = function(annee) {
     if ( annee in Events ) {
         return Events[annee].toObject();
@@ -17,6 +19,12 @@ M.getEvents = function(annee) {
     return null;
 }
 
+/* 
+M.getConcatEvents
+
+Fonction qui concatenne tous les événements de Events dans un seul tableau
+
+*/
 
 M.getConcatEvents = function() {
 
@@ -58,6 +66,15 @@ M.filterEventsByText = function (input){
     
     return structuredClone(res);
 }
+*/
+
+/* 
+M.filterEventsByText
+
+Fonction qui filtre les événements suivant les éléments d'une recherche et qui retourne une copie du tableau contenant ces événements
+
+input : chaine de caractère qui va servir à filtrer
+
 */
 
 M.filterEventsByText = function (input) {

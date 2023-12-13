@@ -3,6 +3,18 @@ import '@toast-ui/calendar/dist/toastui-calendar.min.css';
 
 let V = {};
 
+V.init = function(){
+  let week = document.querySelector('#move');
+  week.addEventListener('click',  V.handler_clickOnWeek );
+
+  
+  let viewStyle = document.querySelector('#view');
+  viewStyle.addEventListener('click',  V.handler_clickOnView );
+
+    
+  
+}
+
 let colorMap = {
   mmi1: {
     TP: '#FF968C' , TD :'#8D342B' , CM:'#760F04', others:'#640900'
@@ -31,6 +43,11 @@ V.uicalendar = new Calendar('#calendar', {
     taskView: false,
     eventView: ['time'],
   },
+  // month: {
+  //   startDayOfWeek: 1,
+  //   dayNames: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+  //   visible: true
+  // },
   template: {
     time: function(event) {
       return `<span style="color: white;">${event.title}</span>`;
@@ -40,19 +57,15 @@ V.uicalendar = new Calendar('#calendar', {
  
 });
 
-V.userDevice = function(){
-  if (window.innerWidth <= 500) {
-    V.uicalendar.changeView('day')
-  } 
-  else {
-    V.uicalendar.changeView('week')
-  }
-}
 
+/* 
+V.handler_clickOnWeek 
 
+Fonction qui change la semaine par précédente / en cours / suivante
 
+ev : objet cliqué
 
-
+*/
 
 V.handler_clickOnWeek = function(ev){
   if ( ev.target.id == 'prev'){
@@ -70,24 +83,31 @@ V.handler_clickOnWeek = function(ev){
 
 }
 
+/* 
+V.handler_clickOnView 
+
+Fonction qui change la vue par mois/semaine/jour
+
+ev : objet cliqué
+
+*/
+
 V.handler_clickOnView = function(ev){
-  if ( ev.target.id == 'mois'){
-      V.uicalendar.changeView('month');
-  }
+  if(ev.target.tagName == "BUTTON"){
+    V.uicalendar.changeView(ev.target.id);
 
-  if ( ev.target.id == 'semaine'){
-      V.uicalendar.changeView('week');
-  }
+    localStorage.removeItem("view");
 
-  if ( ev.target.id == 'jour'){
-      V.uicalendar.changeView('day');
-  }   
-  
+    localStorage.setItem("view", ev.target.id);
+  }
 
 }
 
+
 /* 
 V.courseColor
+
+Fonction qui change la couleur d'un tableau d'événements selon la colorMap
 
 objectevents : tableau d'événements
 
@@ -97,23 +117,28 @@ V.courseColor = function(objectevents) {
  
   for (let event of objectevents) { 
     event.backgroundColor = colorMap[event.calendarId][event.type]
-  
+    
   };
 
  
 };
 
+/* 
+V.userDevice 
 
+Fonction qui change la vue en fonction de la largeur de l'écran 
+(format téléphone -> jour)
+(format desktop -> semaine)
 
-// V.updateColor = function(cal, col, bg, border, drag){
-//   V.uicalendar.setCalendarColor(cal, {
-//     color: col,
-//     backgroundColor: bg,
-//     borderColor: border,
-//     dragBackgroundColor: drag,
-//   });
-// }
+*/
 
-
+V.userDevice = function(){
+  if (window.innerWidth <= 500) {
+    V.uicalendar.changeView('day')
+  } 
+  else {
+    V.uicalendar.changeView('week')
+  }
+}
 
 export { V };
