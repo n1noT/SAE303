@@ -30,10 +30,11 @@ let colorMap = {
 }
 
 V.uicalendar = new Calendar('#calendar', {
-  defaultView: 'week',
+  defaultView: 'month',
   isReadOnly: true,
   usageStatistics: false,
   useDetailPopup: true,
+ 
   week: {
     startDayOfWeek: 1,
     dayNames: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
@@ -42,6 +43,21 @@ V.uicalendar = new Calendar('#calendar', {
     hourEnd: 20,
     taskView: false,
     eventView: ['time'],
+  },
+  theme: {
+    common: {
+      backgroundColor: 'white',
+    }, 
+    week : {
+      dayName: {
+        border: '2px solid rgb(100, 100, 100)',
+        backgroundColor: 'white',
+        color: 'rgb(150, 150, 150)',
+      },
+      today: {
+        color: 'blue',
+      },
+    },
   },
   // month: {
   //   startDayOfWeek: 1,
