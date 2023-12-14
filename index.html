@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MMI Calendar</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
   
     <div>
       <header>
-        <nav>
-          <ul id="view">
+        <nav class="header__nav">
+          <ul id="view" class="header__list">
             <li>
-              <button id="month">
+              <button id="month" class="header__list-item">
                 Mois
               </button>
             </li>
@@ -27,7 +28,7 @@
               </button>
             </li>
           </ul>
-          <ul id="move">
+          <ul id="move" class="header__list">
             <li>
               <button class="button is-rounded prev" id="prev">
                 Précédent
@@ -51,7 +52,7 @@
               <label for="mmi1">MMI1</label>
             </li>
             <li>
-              <input type="checkbox" id="mmi2" name="mmi2" not-checked />
+              <input type="checkbox" id="mmi2" name="mmi2"  not-checked />
               <label for="mmi2">MMI2</label>
             </li>
             <li>
@@ -62,7 +63,7 @@
           </ul>
 
             <select id="groups">
-              <option value="">--Choisir un groupe--</option>
+              <option value="all">--Choisir un groupe--</option>
               <option value="BUT1-G1">BUT1-G1</option>
               <option value="BUT1-G21">BUT1-G21</option>
               <option value="BUT1-G22">BUT1-G22</option>
@@ -85,6 +86,7 @@
 
           
         </nav>
+        <h3 id="date-year"></h3>
       </header>
 
       <main id="calendar" style="height: 600px"></main>

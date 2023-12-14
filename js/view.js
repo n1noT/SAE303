@@ -53,17 +53,14 @@ V.uicalendar = new Calendar('#calendar', {
         border: '2px solid rgb(100, 100, 100)',
         backgroundColor: 'white',
         color: 'rgb(150, 150, 150)',
+        
       },
       today: {
         color: 'blue',
       },
+      
     },
   },
-  // month: {
-  //   startDayOfWeek: 1,
-  //   dayNames: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-  //   visible: true
-  // },
   template: {
     time: function(event) {
       return `<span style="color: white;">${event.title}</span>`;

@@ -44,22 +44,38 @@ C.init = function(){
  
     if(!localStorage.getItem("group") && localStorage.getItem("year") != undefined){
       let year = JSON.parse(localStorage.getItem("year"));
-      V.uicalendar.clear();
-      V.courseColor(year);
-      V.uicalendar.createEvents(year);
+      let allInput = document.querySelectorAll('#year li input');
+    
+      for(let y of allInput){
+        if(year.includes(y.id)){
+          y.checked = true
+        }
+      }
 
+      C.handler_clickOnYear({target:{tagName:'INPUT'}})
+      
     }
 
     if(!localStorage.getItem("year") && localStorage.getItem("group") != undefined){
-      let group = JSON.parse(localStorage.getItem("group"));
-      V.uicalendar.clear();
-      V.courseColor(group);
-      V.uicalendar.createEvents(group);
+      let group = localStorage.getItem("group");
+      C.handler_changeOnGroup({target:{value: group, tagName:'BUTTON'}})
+
+      let selectValue = group;
+
+      let select = document.querySelector("#groups");
+    
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].value == selectValue) {
+          select.options[i].selected = true;
+          break; 
+        }
+      }
     } 
 
     if(localStorage.getItem("view") != undefined){
       let view = localStorage.getItem("view");
-      V.uicalendar.changeView(view)
+      V.handler_clickOnView({target:{id: view, tagName:'BUTTON'}})
+
     } 
 }
 
@@ -77,17 +93,23 @@ C.handler_changeOnGroup = function(ev){
   
   let eventsByGroup = [];
 
+  if(ev.target.value == 'all'){
+    eventsByGroup = allEvents;
+  }
+
+  else{
     for (let event of allEvents){
       if(event.groups.includes(ev.target.value)){
         eventsByGroup.push(event);
       }
   
     }
-
+  }
+  
   localStorage.removeItem("group");
   localStorage.removeItem("year");
 
-  localStorage.setItem("group",  JSON.stringify(eventsByGroup));
+  localStorage.setItem("group",  ev.target.value);
 
   V.uicalendar.clear()
   V.courseColor(eventsByGroup)
@@ -113,8 +135,12 @@ C.handler_clickOnYear = function(ev){
 
     let years = document.querySelectorAll('#year li input')
  
+    let yearStorage = [];
+    
     for(let y of years){
       if(y.checked == true){
+        
+        yearStorage.push(y.id)
         for (let event of allEvents){
           if(event.calendarId == y.id){
             eventsByYear.push(event);
@@ -122,11 +148,11 @@ C.handler_clickOnYear = function(ev){
         }
       }
     }
-
+    
     localStorage.removeItem("year");
     localStorage.removeItem("group");
     
-    localStorage.setItem("year", JSON.stringify(eventsByYear));
+    localStorage.setItem("year", JSON.stringify(yearStorage));
       
     V.uicalendar.clear()
     V.courseColor(eventsByYear)

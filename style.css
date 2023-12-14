@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+:root{
+    --purple : #2A0940;
+    --purple-secondary: #47137a;
+    --yellow: #EAF205;
+    --pink: #BF6F6F; 
+    --white: #F2F2F2;
+    --grey: #f1f1f1;
+    --dark-grey: #949494;
+    --black: #181818;
+
+    --button-bg: var(--grey);
+    --button-bg-hover: var(--purple-secondary);
+    --button-text: var(--black);
+    --button-text-hover: var(--white);
+    --button-border: var(--black);
+    
+
+    --ff : 'Outfit';
+}
+
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core root defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Natural flow and rhythm in articles by default */
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Blur images when they have no alt attribute */
+img:not([alt]) {
+  filter: blur(10px);
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+body{
+    font-family: var(--ff);
+    
+}
+
+.header__nav{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem 1rem;
+}
+
+.header__list{
+    display: flex;
+    gap: .5rem;
+}
+
+
+button{
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: var(--button-bg-hover);
+    color: var(--button-text-hover);
+}
