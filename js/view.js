@@ -111,6 +111,18 @@ V.handler_clickOnView = function(ev){
   if(ev.target.tagName == "BUTTON"){
     V.uicalendar.changeView(ev.target.id);
 
+    let allBtn = document.querySelectorAll('#view li button');
+      
+      for(let btn of allBtn){
+        if(ev.target.id.includes(btn.id)){
+          btn.classList.remove('selected')
+          btn.classList.add('selected')
+        }
+        else{
+          btn.classList.remove('selected')
+        }
+      }
+
     localStorage.removeItem("view");
 
     localStorage.setItem("view", ev.target.id);

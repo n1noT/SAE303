@@ -141,3 +141,12 @@ button:hover{
     background-color: var(--button-bg-hover);
     color: var(--button-text-hover);
 }
+
+.selected{
+    background-color: var(--button-bg-hover);
+    color: var(--button-text-hover);
+}
+
+.calendar{
+    height: 50rem;
+}

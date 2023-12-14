@@ -75,7 +75,6 @@ C.init = function(){
     if(localStorage.getItem("view") != undefined){
       let view = localStorage.getItem("view");
       V.handler_clickOnView({target:{id: view, tagName:'BUTTON'}})
-
     } 
 }
 
