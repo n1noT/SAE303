@@ -28,41 +28,31 @@
               </button>
             </li>
           </ul>
-          <ul id="move" class="header__list">
-            <li>
-              <button class="button is-rounded prev" id="prev">
-                Précédent
-              </button>
-            </li>
-            <li>
-              <button class="button is-rounded today" id="current">
-                En Cours
-              </button>
-            </li>
-            <li>
-            <button class="button is-rounded next" id="next">
-                Suivant
-              </button>
-            </li>
-          </ul>
+          
 
-          <ul id="year">
-            <li>
-              <input type="checkbox" id="mmi1" name="mmi1" not-checked />
-              <label for="mmi1">MMI1</label>
-            </li>
-            <li>
-              <input type="checkbox" id="mmi2" name="mmi2"  not-checked />
-              <label for="mmi2">MMI2</label>
-            </li>
-            <li>
-              <input type="checkbox" id="mmi3" name="mmi3" not-checked />
-              <label for="mmi3">MMI3</label>
-            </li>
+          
+
+          <div class="header__filter">
+            <div class="year">
+              <ul id="year" class="header__list year__list">
+                <li class="year__list-item">
+                  <input type="checkbox" id="mmi1" name="mmi1" not-checked class="year__list-checkbox mmi1-check"/>
+                  <label for="mmi1">MMI1</label>
+                </li>
+                <li class="year__list-item"> 
+                  <input type="checkbox" id="mmi2" name="mmi2"  not-checked class="year__list-checkbox mmi2-check"/>
+                  <label for="mmi2">MMI2</label>
+                </li>
+                <li class="year__list-item">
+                  <input type="checkbox" id="mmi3" name="mmi3" not-checked class="year__list-checkbox mmi3-check"/>
+                  <label for="mmi3">MMI3</label>
+                </li>
+                
+              </ul>
+            </div>
             
-          </ul>
 
-            <select id="groups">
+            <select id="groups" class="header__select">
               <option value="all">--Choisir un groupe--</option>
               <option value="BUT1-G1">BUT1-G1</option>
               <option value="BUT1-G21">BUT1-G21</option>
@@ -80,9 +70,32 @@
               <option value="BUT3-G3">BUT3-G3</option>
               
               
-          </select>
+            </select>
+
+            
+          </div>
 
           <input type="text" id="search" placeholder="Recherche">
+
+          <ul id="move" class="header__list">
+            <li>
+              <button class="move-btn" id="prev">
+                <img src="./assets/left-arrow.svg" alt="" id="prev" class="move-img">
+              </button>
+            </li>
+            <li>
+              <button class="move-btn" id="current">
+                En Cours
+              </button>
+            </li>
+            <li>
+            <button class="move-btn" id="next">
+              <img src="./assets/right-arrow.svg" alt="" id="next" class="move-img">
+              </button>
+            </li>
+          </ul>
+
+      
 
           
         </nav>

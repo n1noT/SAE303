@@ -38,35 +38,6 @@ M.getConcatEvents = function() {
     return allEv;
     
 }
-/*
-M.filterEventsByText = function (input){
-    
-    let res = []
-
-    let inputAllTerms = input.split(" ")
-
-    console.log(inputAllTerms)
-
-    for(let events of M.getConcatEvents()){
-        for (let elt in events){
-            for (let inp of inputAllTerms){
-                if(events[elt].toString().toLowerCase().includes(inp.toLowerCase())){
-                    if(res.includes(events) == false){
-                        res.push(events);
-    
-                    }
-                    
-                }
-            }
-            
-        }
-        
-    }
-    
-    
-    return structuredClone(res);
-}
-*/
 
 /* 
 M.filterEventsByText
