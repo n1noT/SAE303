@@ -119,6 +119,7 @@ img:not([alt]) {
 body{
     font-family: var(--ff);
     background-color: var(--background) ;
+    line-height: 1rem;
 }
 
 .header__nav{
@@ -144,14 +145,19 @@ button{
     border: none;
     padding: .5rem 1rem;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 button:hover{
-    background-color: var(--button-bg-hover);
-    color: var(--button-text-hover);
+  background-color: var(--button-bg-hover-secondary);
+  color: var(--button-text);
 }
 
 .selected{
+    background-color: var(--button-bg-hover);
+    color: var(--button-text-hover);
+}
+.selected:hover{
     background-color: var(--button-bg-hover);
     color: var(--button-text-hover);
 }
@@ -162,13 +168,9 @@ button:hover{
 
 .move-img{
   height: 1rem;
+  width: 1rem;
 }
 
-.move-btn:hover{
-  background-color: var(--button-bg-hover-secondary);
-  color: var(--button-text);
-
-}
 
 .year{
   gap: .5rem;
@@ -177,6 +179,16 @@ button:hover{
 
 .year__list{
   gap: 1.5rem;
+}
+
+.year::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%; 
+  background-color: var(--black);
+  margin-top: 1rem; 
+  opacity: 20%;
 }
 
 .year__list-item{
@@ -188,6 +200,7 @@ button:hover{
   padding-right: .5rem;
   border-radius: 5px;
   user-select: none;
+  
 }
 
 .year__list-item:hover{
@@ -197,22 +210,26 @@ button:hover{
 
 .year__list-checkbox{
   appearance: none;
-  background-color: --;
+  outline: 1px solid grey;
   width: 1rem;
   height: 1rem;
   border-radius: 100%;
+  cursor: pointer;
 }
 
 .mmi1-check:checked{
   background-color: #640900;
+  outline: 1px solid #640900;
 }
 
 .mmi2-check:checked{
   background-color: #002464;
+  outline: 1px solid #002464;
 }
 
 .mmi3-check:checked{
   background-color: #096400;
+  outline: 1px solid #096400;
 }
 
 .header__filter{
@@ -230,19 +247,41 @@ button:hover{
   padding: .2rem;
 }
 
-.year::after {
-  content: "";
-  display: block;
-  height: 2px;
-  width: 100%; 
-  background-color: var(--black);
-  margin-top: 1rem; 
-  opacity: 20%;
+.header__search{
+  border-radius: 5px;
+  padding: .2rem .5rem;
+  border: 1px solid grey;
 }
+
 
 @media (min-width: 768px){
 
-  body{
-    font-size: 1.5rem
-  };
+  .header__nav{
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    max-width: none;
+    flex-wrap: wrap;
+  }
+
+  .year{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .header__filter{
+    flex-direction: row;
+
+  
+  }
+
+  .year::after {
+    margin: 0 2rem;
+    height: 100%;
+    width: 2px; 
+   
+  }
+  
+  
 }
