@@ -25,7 +25,7 @@ let colorMap = {
   },
 
   mmi3: {
-    TP: '#83FF77cc' , TD :'#44B839cc' , CM:'#177B0Dcc', others:'#096400cc'
+    TP: '#6CDC61cc' , TD :'#44B839cc' , CM:'#177B0Dcc', others:'#096400cc'
   }
 }
 

@@ -107,6 +107,7 @@ C.handler_changeOnGroup = function(ev){
   
   localStorage.removeItem("group");
   localStorage.removeItem("year");
+  C.clearFilter();
 
   localStorage.setItem("group",  ev.target.value);
 
@@ -150,6 +151,7 @@ C.handler_clickOnYear = function(ev){
     
     localStorage.removeItem("year");
     localStorage.removeItem("group");
+    C.clearGroup();
     
     localStorage.setItem("year", JSON.stringify(yearStorage));
       
@@ -162,6 +164,47 @@ C.handler_clickOnYear = function(ev){
 }
 
 /* 
+C.clearfilter
+
+Fonction qui clear les années
+
+ev : chaine entré
+
+*/
+
+C.clearFilter = function (){
+  let years = document.querySelectorAll('#year li input');
+
+  for(let y of years){
+    y.checked = false
+  }
+  
+
+}
+
+/* 
+C.clearGroup
+
+Fonction qui clear le groupe
+
+ev : chaine entré
+
+*/
+
+C.clearGroup = function (){
+  let selectValue = "all";
+
+  let select = document.querySelector("#groups");
+    
+  for (let i = 0; i < select.options.length; i++) {
+    if (select.options[i].value == selectValue) {
+        select.options[i].selected = true;
+        break; 
+      }
+  }
+}
+
+/* 
 C.handler_keyUpSearch
 
 Fonction qui affiche le calendrier selon des critères de recherche
@@ -171,11 +214,12 @@ ev : chaine entré
 */
 
 C.handler_keyUpSearch = function(ev){
+  C.clearFilter();
+  C.clearGroup();
 
   let value = ev.target.value;
-  
   let eventsByText = M.filterEventsByText(value);
-
+  
   V.uicalendar.clear()
   V.courseColor(eventsByText)
   V.uicalendar.createEvents(eventsByText)
