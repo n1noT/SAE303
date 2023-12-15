@@ -4,12 +4,12 @@
     --purple : #2A0940;
     --purple-secondary: #47137a;
     --yellow: #EAF205;
-    --pink: #BF6F6F; 
+    --light-purple: #9757d6; 
     --white: #fafafa;
     --grey: #dfdfdf;
     --dark-grey: #eeeeee;
     --darker-grey: rgb(173, 173, 173);
-    --black: #181818;
+    --black: #31002b;
 
     --button-bg: var(--grey);
     --button-bg-hover: var(--purple-secondary);
@@ -120,6 +120,7 @@ body{
     font-family: var(--ff);
     background-color: var(--background) ;
     line-height: 1rem;
+    color: var(--button-text);
 }
 
 .header__nav{
@@ -127,8 +128,8 @@ body{
     flex-direction: column;
     gap: 2rem;
     width: 100%;
-    max-width: 50rem;
-    padding: 2rem 1rem;
+    max-width: 60rem;
+    padding: .5rem;
 }
 
 .header__list{
@@ -201,6 +202,10 @@ button:hover{
   border-radius: 5px;
   user-select: none;
   
+}
+
+label{
+  cursor: pointer;
 }
 
 .year__list-item:hover{

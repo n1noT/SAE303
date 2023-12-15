@@ -17,15 +17,15 @@ V.init = function(){
 
 let colorMap = {
   mmi1: {
-    TP: '#FF968C' , TD :'#8D342B' , CM:'#760F04', others:'#640900'
+    TP: '#ff968ccc' , TD :'#8d342bcc' , CM:'#760F04cc', others:'#640900cc'
   },
 
   mmi2: {
-    TP: '#8CB5FF' , TD :'#3B64AF' , CM:'#083078', others:'#002464'
+    TP: '#8CB5FFcc' , TD :'#3B64AFcc' , CM:'#083078cc', others:'#002464cc'
   },
 
   mmi3: {
-    TP: '#83FF77' , TD :'#44B839' , CM:'#177B0D', others:'#096400'
+    TP: '#83FF77cc' , TD :'#44B839cc' , CM:'#177B0Dcc', others:'#096400cc'
   }
 }
 
@@ -45,8 +45,8 @@ V.uicalendar = new Calendar('#calendar', {
     eventView: ['time'],
   },
   theme: {
-    common: {
-      backgroundColor: 'white',
+    month: {
+      backgroundColor: 'black',
     }, 
     week : {
       dayName: {
@@ -56,14 +56,14 @@ V.uicalendar = new Calendar('#calendar', {
         
       },
       today: {
-        color: 'blue',
+        color: '#9757d6',
       },
       
     },
   },
   template: {
     time: function(event) {
-      return `<span style="color: white;">${event.title}</span>`;
+      return `<span style="color: white; text-wrap: wrap;">${event.title}</span>`;
     }
   },
  
@@ -144,6 +144,7 @@ V.courseColor = function(objectevents) {
  
   for (let event of objectevents) { 
     event.backgroundColor = colorMap[event.calendarId][event.type]
+    event.borderColor = colorMap[event.calendarId].others
     
   };
 
